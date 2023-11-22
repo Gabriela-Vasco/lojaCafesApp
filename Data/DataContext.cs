@@ -11,6 +11,10 @@ public class DataContext : DbContext
         Configuration = configuration;
     }
 
+
+    public DataContext()
+    {}
+
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         // connect to sqlite database
@@ -18,4 +22,5 @@ public class DataContext : DbContext
     }
 
     public DbSet<Cafe> Cafe { get; set; }
+    public DbSet<Torra> Torra { get; set; }
 }

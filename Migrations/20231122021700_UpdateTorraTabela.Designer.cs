@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Helpers;
 
@@ -10,9 +11,11 @@ using WebApi.Helpers;
 namespace lojaCafesApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231122021700_UpdateTorraTabela")]
+    partial class UpdateTorraTabela
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.14");
@@ -44,7 +47,12 @@ namespace lojaCafesApp.Migrations
                     b.Property<double>("Preco")
                         .HasColumnType("REAL");
 
+                    b.Property<int?>("TorraId1")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CafeId");
+
+                    b.HasIndex("TorraId1");
 
                     b.ToTable("Cafe");
                 });
@@ -66,6 +74,18 @@ namespace lojaCafesApp.Migrations
                     b.HasKey("TorraId");
 
                     b.ToTable("Torra");
+                });
+
+            modelBuilder.Entity("lojaCafesApp.Models.Cafe", b =>
+                {
+                    b.HasOne("lojaCafesApp.Models.Torra", null)
+                        .WithMany("Cafes")
+                        .HasForeignKey("TorraId1");
+                });
+
+            modelBuilder.Entity("lojaCafesApp.Models.Torra", b =>
+                {
+                    b.Navigation("Cafes");
                 });
 #pragma warning restore 612, 618
         }
