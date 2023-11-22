@@ -22,5 +22,5 @@ public class DataContext : DbContext
     }
 
     public DbSet<Cafe> Cafe { get; set; }
-    public DbSet<Torra> Torra { get; set; }
+    public DbSet<TorraCafe> TorraCafe { get; set; }
 }

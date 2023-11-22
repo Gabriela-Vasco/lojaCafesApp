@@ -11,8 +11,8 @@ using WebApi.Helpers;
 namespace lojaCafesApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231122021802_AddCargaInicialTorra")]
-    partial class AddCargaInicialTorra
+    [Migration("20231122231415_AddTorraCafeCargaInicial")]
+    partial class AddTorraCafeCargaInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,45 +47,24 @@ namespace lojaCafesApp.Migrations
                     b.Property<double>("Preco")
                         .HasColumnType("REAL");
 
-                    b.Property<int?>("TorraId1")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("CafeId");
-
-                    b.HasIndex("TorraId1");
 
                     b.ToTable("Cafe");
                 });
 
-            modelBuilder.Entity("lojaCafesApp.Models.Torra", b =>
+            modelBuilder.Entity("lojaCafesApp.Models.TorraCafe", b =>
                 {
-                    b.Property<int>("TorraId")
+                    b.Property<int>("TorraCafeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Caracteristicas")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("TorraId");
+                    b.HasKey("TorraCafeId");
 
-                    b.ToTable("Torra");
-                });
-
-            modelBuilder.Entity("lojaCafesApp.Models.Cafe", b =>
-                {
-                    b.HasOne("lojaCafesApp.Models.Torra", null)
-                        .WithMany("Cafes")
-                        .HasForeignKey("TorraId1");
-                });
-
-            modelBuilder.Entity("lojaCafesApp.Models.Torra", b =>
-                {
-                    b.Navigation("Cafes");
+                    b.ToTable("TorraCafe");
                 });
 #pragma warning restore 612, 618
         }

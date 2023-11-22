@@ -49,23 +49,19 @@ namespace lojaCafesApp.Migrations
                     b.ToTable("Cafe");
                 });
 
-            modelBuilder.Entity("lojaCafesApp.Models.Torra", b =>
+            modelBuilder.Entity("lojaCafesApp.Models.TorraCafe", b =>
                 {
-                    b.Property<int>("TorraId")
+                    b.Property<int>("TorraCafeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Caracteristicas")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("TorraId");
+                    b.HasKey("TorraCafeId");
 
-                    b.ToTable("Torra");
+                    b.ToTable("TorraCafe");
                 });
 #pragma warning restore 612, 618
         }
