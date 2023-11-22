@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <div class="text-center my-5">
+        <h1 class="display-4">Bem vindo à Loja Cafés!</h1>
+    </div>
+
+    <div class="container">
+         <div class="row">
+            @foreach (var item in Model.ListaCafes)
+            {
+                <div class="col-sm-4">
+                    <div class="card border-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-body">
+                            <img src="@item.ImageUri" class="d-block w-100" alt="coffee bag">
+                            <h4 class="card-title my-4">@item.Nome</h4>
+                            <a 
+                                class="btn btn-primary" 
+                                asp-page="/Details"
+                                asp-route-id="@item.CafeId"
+                                asp-route-slug="@item.NomeSlug"
+                            >
+                                Ver Mais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

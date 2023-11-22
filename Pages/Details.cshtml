@@ -1,0 +1,33 @@
+@page "/cafe/{slug}/{id}"
+@model lojaCafesApp.Pages.DetailsModel
+@{
+    ViewData["Title"] = "Detalhe";
+}
+
+<div>
+    <h2 class="my-5">@Model.Cafe.Nome</h2>
+    <div class="row">
+        <div class="col-4">
+            <img class="img-fluid rounded" src="@Model.Cafe.ImageUri">
+        </div>
+        <div class="col-6">
+            <h4 class="my-3">Sobre:</h4>
+            <p>@Model.Cafe.Descricao</p>
+            <h4 class="my-3">Mais Info:</h4>
+            <ul>
+                <li><label asp-for="Cafe.Preco"></label>: @Html.DisplayFor(model => model.Cafe.Preco)</li>
+                <li><label asp-for="Cafe.EntregaExpressa"></label>: @Model.Cafe.EntregaExpressaFormatada</li>
+                <li><label asp-for="Cafe.DataCadastro"></label>: @Html.DisplayFor(model => model.Cafe.DataCadastro)</li>
+            </ul>
+            <a 
+                class="btn my-3 btn-primary"
+                asp-page="/Edit"
+                asp-route-id="@Model.Cafe.CafeId"
+                asp-route-slug="@Model.Cafe.NomeSlug"
+            >
+                Editar
+            </a>
+        </div>
+    </div>
+</div>
+
