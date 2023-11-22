@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddSingleton<ICafeService, CafeService>();
+builder.Services.AddTransient<ICafeService, CafeService>();
 
 builder.Services.AddDbContext<DataContext>();
 
