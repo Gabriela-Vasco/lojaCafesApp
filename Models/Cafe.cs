@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 namespace lojaCafesApp.Models;
 
 public class Cafe 
@@ -35,4 +34,6 @@ public class Cafe
     [Required(ErrorMessage = "Campo obrigatório.")]
     [DataType("month")]
     public DateTime DataCadastro { get; set; }
+
+    public int? TorraId;
 }
