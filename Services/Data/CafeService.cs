@@ -9,21 +9,32 @@ public class CafeService : ICafeService
     private DataContext _context;
     public CafeService(DataContext context)
     {
-        context = _context;
+        _context = context;
     }
     public void Alterar(Cafe cafe)
     {
-        throw new NotImplementedException();
+        var cafeEncontrado = Obter(cafe.CafeId);
+        cafeEncontrado.Nome = cafe.Nome;
+        cafeEncontrado.Descricao = cafe.Descricao;
+        cafeEncontrado.ImageUri = cafe.ImageUri;
+        cafeEncontrado.Preco = cafe.Preco;
+        cafeEncontrado.EntregaExpressa = cafe.EntregaExpressa;
+        cafeEncontrado.DataCadastro = cafe.DataCadastro;
+        
+        _context.SaveChanges();
     }
 
     public void Excluir(int id)
     {
-        throw new NotImplementedException();
+        var cafeEncontrado = Obter(id);
+        _context.Cafe.Remove(cafeEncontrado);
+        _context.SaveChanges();
     }
 
     public void Incluir(Cafe cafe)
     {
-        throw new NotImplementedException();
+        _context.Cafe.Add(cafe);
+        _context.SaveChanges();
     }
 
     public Cafe Obter(int id)
