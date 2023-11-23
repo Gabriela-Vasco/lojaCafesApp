@@ -34,4 +34,6 @@ public class Cafe
     [Required(ErrorMessage = "Campo obrigatório.")]
     [DataType("month")]
     public DateTime DataCadastro { get; set; }
+
+    public int? TorraCafeId { get; set; }
 }

@@ -104,4 +104,9 @@ public class CafeService : ICafeService
         var cafeEncontrado = Obter(id);
         _cafes.Remove(cafeEncontrado);
     }
+
+    public IList<TorraCafe> ObterTodasAsTorrasDeCafe()
+    {
+        throw new NotImplementedException();
+    }
 }

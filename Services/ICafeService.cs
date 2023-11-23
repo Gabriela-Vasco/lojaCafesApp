@@ -8,4 +8,5 @@ public interface ICafeService
     void Incluir(Cafe cafe);
     void Alterar(Cafe cafe);
     void Excluir(int id);
+    IList<TorraCafe> ObterTodasAsTorrasDeCafe();
 }

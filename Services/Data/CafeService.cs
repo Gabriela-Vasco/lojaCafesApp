@@ -46,4 +46,9 @@ public class CafeService : ICafeService
     {
         return _context.Cafe.ToList();
     }
+
+    public IList<TorraCafe> ObterTodasAsTorrasDeCafe()
+    {
+        return _context.TorraCafe.ToList();
+    }
 }
