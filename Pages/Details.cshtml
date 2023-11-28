@@ -18,6 +18,13 @@
                 <li><label asp-for="Cafe.Preco"></label>: @Html.DisplayFor(model => model.Cafe.Preco)</li>
                 <li><label asp-for="Cafe.EntregaExpressa"></label>: @Model.Cafe.EntregaExpressaFormatada</li>
                 <li><label asp-for="Cafe.DataCadastro"></label>: @Html.DisplayFor(model => model.Cafe.DataCadastro)</li>
+                @if(Model.TorraCafe is null)
+                {
+                    <li><label asp-for="Cafe.TorraCafeId"></label>: -- </li>
+                } else 
+                {
+                    <li><label asp-for="Cafe.TorraCafeId"></label>: @Html.DisplayFor(model => model.TorraCafe.Nome)</li>
+                }
             </ul>
             <a 
                 class="btn my-3 btn-primary"

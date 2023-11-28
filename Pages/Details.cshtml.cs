@@ -12,9 +12,11 @@ public class DetailsModel : PageModel
         _service = cafeService;
     }
     public Cafe Cafe { get; private set; }
+    public TorraCafe TorraCafe { get; private set; }
     public IActionResult OnGet(int id)
     {
         Cafe = _service.Obter(id);
+        TorraCafe = _service.ObterTodasAsTorrasDeCafe().SingleOrDefault(item => item.TorraCafeId == Cafe.TorraCafeId);
 
         if (Cafe == null)
         {

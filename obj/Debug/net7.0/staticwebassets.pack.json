@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets/images/coffeebag6.png"
     },
     {
+      "Id": "/home/gabriela/infnet/c#/lojaCafesApp/wwwroot/images/coffeebeansbg.png",
+      "PackagePath": "staticwebassets/images/coffeebeansbg.png"
+    },
+    {
       "Id": "/home/gabriela/infnet/c#/lojaCafesApp/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

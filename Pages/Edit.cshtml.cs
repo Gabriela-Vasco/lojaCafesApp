@@ -2,6 +2,7 @@ using lojaCafesApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using lojaCafesApp.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace lojaCafesApp.Pages;
 
@@ -14,8 +15,7 @@ public class EditModel : PageModel
 
     [BindProperty]
     public Cafe Cafe { get; set; }
-
-    public void OnGet(int id) => Cafe = _service.Obter(id);
+    public SelectList TorraCafeOptionItemsEdit { get; private set; }
 
     public IActionResult OnPost()
     {
@@ -32,5 +32,15 @@ public class EditModel : PageModel
     {
         _service.Excluir(Cafe.CafeId);
         return RedirectToPage("/Index");
+    }
+
+    public void OnGet(int id)
+    {
+        Cafe = _service.Obter(id);
+        TorraCafeOptionItemsEdit = new SelectList(
+                _service.ObterTodasAsTorrasDeCafe(),
+                nameof(TorraCafe.TorraCafeId),
+                nameof(TorraCafe.Nome)
+            );
     }
 }

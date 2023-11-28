@@ -20,6 +20,7 @@ public class CafeService : ICafeService
         cafeEncontrado.Preco = cafe.Preco;
         cafeEncontrado.EntregaExpressa = cafe.EntregaExpressa;
         cafeEncontrado.DataCadastro = cafe.DataCadastro;
+        cafeEncontrado.TorraCafeId = cafe.TorraCafeId;
         
         _context.SaveChanges();
     }

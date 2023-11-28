@@ -35,5 +35,6 @@ public class Cafe
     [DataType("month")]
     public DateTime DataCadastro { get; set; }
 
+    [Display(Name = "Torra do Café")]
     public int? TorraCafeId { get; set; }
 }

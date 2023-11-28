@@ -4,62 +4,80 @@
     ViewData["Title"] = "Cadastro";
 }
 
-<div class="row pt-5">
-    <div class="col-md-4">
-        <form method="post">
-            <h4>Inclusão de Café</h4>
-            
-            <hr />
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('/images/coffeebeansbg.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 100vh; 
+            }
+            form {
+                background-color: rgba(243, 236, 236, 0.979);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row pt-5" >
+            <div class="col-md-4">
+                <form method="post" class="p-5">
+                    <h4>Inclusão de Café</h4>
+                    
+                    <hr />
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group mt-3">
-                <label asp-for="Cafe.Nome" class="control-label"></label>
-                <input asp-for="Cafe.Nome" class="form-control" />
-                <span asp-validation-for="Cafe.Nome" class="text-danger"></span>
+                    <div class="form-group mt-3">
+                        <label asp-for="Cafe.Nome" class="control-label"></label>
+                        <input asp-for="Cafe.Nome" class="form-control" />
+                        <span asp-validation-for="Cafe.Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Cafe.Descricao" class="control-label"></label>
+                        <input asp-for="Cafe.Descricao" class="form-control" />
+                        <span asp-validation-for="Cafe.Descricao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Cafe.ImageUri" class="control-label"></label>
+                        <input asp-for="Cafe.ImageUri" class="form-control" />
+                        <span asp-validation-for="Cafe.ImageUri" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Cafe.Preco" class="control-label"></label>
+                        <input asp-for="Cafe.Preco" class="form-control" />
+                        <span asp-validation-for="Cafe.Preco" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Cafe.DataCadastro" class="control-label"></label>
+                        <input asp-for="Cafe.DataCadastro" class="form-control" />
+                        <span asp-validation-for="Cafe.DataCadastro" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input class="form-check-input" asp-for="Cafe.EntregaExpressa" />
+                        <label asp-for="Cafe.EntregaExpressa"></label>
+                    </div>
+                    <div class="form-group mt-3 mb-3">
+                        <label asp-for="Cafe.TorraCafeId" class="control-label"></label>
+                        <select 
+                            class="form-select" 
+                            asp-for="Cafe.TorraCafeId"
+                            asp-items="Model.TorraCafeOptionItems"
+                        >
+                            <option value="">Selecione uma opção</option>
+                        </select>
+                        <span asp-validation-for="Cafe.TorraCafeId"class="text-danger">
+                        </span>
+                    </div>
+                    <div class="form-group mt-4">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group mt-3">
-                <label asp-for="Cafe.Descricao" class="control-label"></label>
-                <input asp-for="Cafe.Descricao" class="form-control" />
-                <span asp-validation-for="Cafe.Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group mt-3">
-                <label asp-for="Cafe.ImageUri" class="control-label"></label>
-                <input asp-for="Cafe.ImageUri" class="form-control" />
-                <span asp-validation-for="Cafe.ImageUri" class="text-danger"></span>
-            </div>
-            <div class="form-group mt-3">
-                <label asp-for="Cafe.Preco" class="control-label"></label>
-                <input asp-for="Cafe.Preco" class="form-control" />
-                <span asp-validation-for="Cafe.Preco" class="text-danger"></span>
-            </div>
-            <div class="form-group mt-3">
-                <label asp-for="Cafe.DataCadastro" class="control-label"></label>
-                <input asp-for="Cafe.DataCadastro" class="form-control" />
-                <span asp-validation-for="Cafe.DataCadastro" class="text-danger"></span>
-            </div>
-            <div class="form-group mt-3">
-                <input class="form-check-input" asp-for="Cafe.EntregaExpressa" />
-                <label asp-for="Cafe.EntregaExpressa"></label>
-            </div>
-            <div class="form-group mt-3 mb-3">
-                <label asp-for="Cafe.TorraCafeId" class="control-label"></label>
-                <select 
-                    class="form-select" 
-                    asp-for="Cafe.TorraCafeId"
-                    asp-items="Model.TorraCafeOptionItems"
-                >
-                    <option value="">Selecione uma opção</option>
-                </select>
-                <span asp-validation-for="Cafe.TorraCafeId"class="text-danger">
-                </span>
-            </div>
-            <div class="form-group mt-4">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+    </body>
+</html>
 
 @section Scripts {
     @{ 
