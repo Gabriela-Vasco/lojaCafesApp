@@ -27,10 +27,17 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-page="/Privacy">Privacidade</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-page="/Create">Adicione um item</a>
-                        </li>
+                        @if(User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Create">Adicione um item</a>
+                            </li>
+                            <li class="nav-item bg-primary">
+                                <a class="nav-link" asp-page="/Torras/Index">Torras dos cafés</a>
+                            </li>
+                        }
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>

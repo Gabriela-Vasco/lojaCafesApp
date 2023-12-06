@@ -1,0 +1,37 @@
+@page
+@model lojaCafesApp.Pages.Torras.IndexModel
+
+@{
+    ViewData["Title"] = "Torras";
+}
+<div style="margin-top: 5rem;">
+    <h1 class="mb-4">Torras</h1>
+
+    <p>
+        <a asp-page="Create" class="btn btn-secondary text-white">Adicionar nova torra</a>
+    </p>
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TorraCafe[0].Nome)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.TorraCafe) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.TorraCafeId">Editar</a> |
+                    <a asp-page="./Details" asp-route-id="@item.TorraCafeId">Detalhes</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.TorraCafeId">Deletar</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

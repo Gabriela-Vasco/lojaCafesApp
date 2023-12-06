@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using lojaCafesApp.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lojaCafesApp.Pages;
 
+[Authorize]
 public class EditModel : PageModel
 {
     private ICafeService _service;

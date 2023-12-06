@@ -6,5 +6,5 @@ public class TorraCafe
 
     public string Nome { get; set; }
 
-    public ICollection<Cafe> Cafes { get; set; }
+    public ICollection<Cafe>? Cafes { get; set; }
 }

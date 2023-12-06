@@ -1,14 +1,37 @@
+using lojaCafesApp.Data;
 using lojaCafesApp.Services;
 using lojaCafesApp.Services.Data;
-using WebApi.Helpers;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddScoped<ICafeService, CafeService>();
+builder.Services.AddRazorPages(options => {
+    options.Conventions.AuthorizeFolder("/Torras");
+});
+builder.Services.AddTransient<ICafeService, CafeService>();
 
 builder.Services.AddDbContext<DataContext>();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+    options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<DataContext>();
+
+builder.Services.Configure<IdentityOptions>(options => {
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 3;
+
+    // Lockout settings
+    options.Lockout.MaxFailedAccessAttempts = 30;
+    options.Lockout.AllowedForNewUsers = true;
+
+    // User settings
+    options.User.RequireUniqueEmail = true;
+});
 
 var app = builder.Build();
 
@@ -20,10 +43,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+var context = new DataContext();
+context.Database.Migrate();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

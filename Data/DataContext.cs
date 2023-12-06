@@ -1,26 +1,22 @@
 using lojaCafesApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-namespace WebApi.Helpers;
+namespace lojaCafesApp.Data;
 
-public class DataContext : DbContext
+public class DataContext : IdentityDbContext
 {
-    protected readonly IConfiguration Configuration;
-
-    public DataContext(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
-
-
-    public DataContext()
-    {}
-
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
-    {
-        // connect to sqlite database
-        options.UseSqlite(Configuration.GetConnectionString("WebApiDatabase"));
-    }
-
     public DbSet<Cafe> Cafe { get; set; }
     public DbSet<TorraCafe> TorraCafe { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+        string conn = config.GetConnectionString("Conn");
+        optionsBuilder.UseSqlite(conn);
+    }
+
 }

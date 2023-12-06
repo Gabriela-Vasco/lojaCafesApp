@@ -1,0 +1,24 @@
+@page
+@model lojaCafesApp.Pages.Torras.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhe da torra";
+}
+<div style="margin: 5rem;" class="d-flex flex-column">
+    <div>
+        <h4>@Model.TorraCafe.Nome</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TorraCafe.Nome)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TorraCafe.Nome)
+            </dd>
+        </dl>
+    </div>
+    <div class="mt-5">
+        <a asp-page="./Edit" asp-route-id="@Model.TorraCafe?.TorraCafeId">Editar</a> |
+        <a asp-page="./Index">Voltar</a>
+    </div>
+</div>

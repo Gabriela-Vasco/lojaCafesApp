@@ -26,14 +26,17 @@
                     <li><label asp-for="Cafe.TorraCafeId"></label>: @Html.DisplayFor(model => model.TorraCafe.Nome)</li>
                 }
             </ul>
-            <a 
-                class="btn my-3 btn-primary"
-                asp-page="/Edit"
-                asp-route-id="@Model.Cafe.CafeId"
-                asp-route-slug="@Model.Cafe.NomeSlug"
-            >
-                Editar
-            </a>
+            @if(User.Identity.IsAuthenticated)
+            {
+                <a 
+                    class="btn my-3 btn-primary"
+                    asp-page="/Edit"
+                    asp-route-id="@Model.Cafe.CafeId"
+                    asp-route-slug="@Model.Cafe.NomeSlug"
+                >
+                    Editar
+                </a>
+            }
         </div>
     </div>
 </div>
